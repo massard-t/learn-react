@@ -5,8 +5,44 @@ import './App.css';
 class Hey extends Component {
   render() {
     return (
-        <p> OH BEWARE SAMPLE TEXT </p>
+      <p> OH BEWARE SAMPLE TEXT </p>
     );
+  }
+}
+
+class PrettyButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  getInitialState() {
+    return {
+      active: true,
+    }
+  }
+
+  handleClick() {
+    this.setState(prevState => {
+      active: !prevState.active
+    })
+    this.state.active = !this.state.active
+  }
+
+  render() {
+    let isActive = this.state.active ? "On" : "Off";
+
+    return (
+      <div className="PrettyButton">
+        <h3> Click this :) </h3>
+        <input id="magicButton" type="submit" onClick={this.handleClick}/>
+        <p>{isActive}</p>
+      </div>
+    )
   }
 }
 
@@ -23,6 +59,7 @@ class App extends Component {
         </p>
         <Hey />
         <p> Sample text</p>
+        <PrettyButton />
       </div>
     );
   }
