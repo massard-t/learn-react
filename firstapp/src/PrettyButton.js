@@ -5,7 +5,7 @@ class PrettyButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -14,27 +14,28 @@ class PrettyButton extends Component {
   getInitialState() {
     return {
       active: true,
-    }
+    };
   }
 
   handleClick() {
-    this.setState(prevState => {
-      active: !prevState.active
-    })
-    this.state.active = !this.state.active
+    this.setState((prevState) => {
+      active: !prevState.active;
+    });
+    this.state.active = !this.state.active;
   }
 
   render() {
-    let isActive = this.state.active ? "On" : "Off";
+    const isActive = this.state.active ? 'On' : 'Off';
 
     return (
       <div className="PrettyButton">
         <h3> Click this :) </h3>
-        <input id="magicButton" type="submit" onClick={this.handleClick}/>
+        <input id="magicButton" type="submit" onClick={this.handleClick} />
         <p>{isActive}</p>
       </div>
-    )
+    );
   }
 }
 
-export { PrettyButton };
+const prettyButton = PrettyButton;
+export { prettyButton as default };
